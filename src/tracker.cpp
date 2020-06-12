@@ -311,6 +311,14 @@ void Tracker::extractPatches(Patches &patches, const int& num_patches, const Ima
     int h = sensor_size_.height;
     int w = sensor_size_.width;
     cv::Mat mask = cv::Mat::ones(sensor_size_, CV_8UC1);
+
+    static bool debug = false;
+    if (!debug) {
+        char name[] = "debug";
+        interface_.showImage(name, mask);
+        debug = true;
+    }
+
     mask.rowRange(0, hp).colRange(0, w-1).setTo(0);
     mask.rowRange(h - hp, h - 1).colRange(0, w-1).setTo(0);
     mask.rowRange(0, h-1).colRange(0, hp).setTo(0);

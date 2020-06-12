@@ -10,6 +10,7 @@
 #include <mutex>
 #include <fstream>
 
+#include "interface.h"
 #include "patch.h"
 #include "optimizer.h"
 #include "viewer.h"
@@ -206,6 +207,9 @@ private:
 
     // tracks file
     std::ofstream tracks_file_;
+
+    // interface
+    interface::Interface interface_;
 };
 
 }
